@@ -1,118 +1,123 @@
-
+/* Reset default styles for margin and padding */
 body {
   margin: 0;
   padding: 0;
 }
 
-#header-container{
+/* Styling for the header container */
+#header-container {
   display: grid;
   text-align: center;
-  grid-template-columns: 1fr;
-  grid-template-areas: 
-  "header "
-  "nav";
+  grid-template-columns: 1fr; /* One column for the header */
+  grid-template-areas:
+    "header"
+    "nav";
 }
 
-#header-container h1{
-  grid-area: header;
+/* Styling for the header (h1) element */
+#header-container h1 {
+  grid-area: header; /* Place the header in the 'header' area */
 }
 
+/* Styling for the navigation container */
 nav {
   display: grid;
   background-color: #333;
   padding: 0;
   margin: 0;
-  grid-area: nav;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-areas: ". pic-some .  . cart . ";
+  grid-area: nav; /* Place the navigation in the 'nav' area */
+  grid-template-columns: repeat(6, 1fr); /* Create 6 columns in the navigation */
+  grid-template-areas: ". pic-some .  . cart . "; /* Define grid areas for navigation items */
 }
 
+/* Styling for navigation links */
 nav a {
   text-decoration: none;
   color: white;
   font-size: 1rem;
-  /* max-width: 140px; */
 }
 
+/* Styling for navigation links on hover */
 nav a:hover {
   background-color: #777;
-
 }
 
+/* Styling for the 'Pic Some' container */
 #pic-some-container {
-  grid-area: pic-some;
+  grid-area: pic-some; /* Place 'Pic Some' in the 'pic-some' area */
 }
 
-#pic-some-container a{
+/* Styling for 'Pic Some' link */
+#pic-some-container a {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 0;
 }
 
+/* Styling for the 'Cart' container */
 #cart-container {
-  grid-area: cart;
+  grid-area: cart; /* Place 'Cart' in the 'cart' area */
   margin: 0;
   padding: 0;
 }
 
-#cart-container a{
+/* Styling for 'Cart' link */
+#cart-container a {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 0;
 }
 
+/* Styling for the cart icon */
 .cart-icon {
   margin: 0 4px;
 }
 
+/* Styling for the main content container */
 .container {
   display: grid;
-  grid-template-rows: 1fr; 
-  /* Only one row for the content */
-  justify-items: center; 
-  /* Center the content horizontally */
-  align-items: center; 
-  /* Center the content vertically */
-  /* height: 100vh;  */ 
-  /* Make the container take up the full viewport height */
-  padding: 20px; 
-  /* Add padding for spacing */
+  grid-template-rows: 1fr; /* Only one row for the content */
+  justify-items: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  padding: 20px; /* Add padding for spacing */
 }
 
+/* Styling for h2 inside the container */
 .container h2 {
-  max-width: 100%; /* Ensure the h1 does not overflow horizontally */
+  max-width: 100%; /* Ensure the h2 does not overflow horizontally */
 }
 
+/* Styling for the photo grid container */
 .photo-div {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 10px; 
-  max-width: 80rem;
-  /* outline: 0.25em solid #111; */
+  grid-template-columns: repeat(4, 1fr); /* Create 4 columns in the photo grid */
+  gap: 10px; /* Adjust the gap between images */
+  max-width: 80rem; /* Limit the maximum width of the grid */
 }
 
+/* Styling for individual images in the grid */
 .scrimba-images {
   max-width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-
-/* Adjust for mobile screens */
+/* Media query to adjust the grid for mobile screens */
 @media (max-width: 768px) {
   .photo-div {
-    grid-template-columns: repeat(2, 1fr); 
-    /* Change to 2 columns per row */
+    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns per row for mobile screens */
   }
 }
 
+/* Styling for image containers with icons */
 .image-container {
   position: relative;
   display: inline-block;
 }
 
+/* Styling for the icon container that appears on hover */
 .icon-container {
   position: absolute;
   top: 0;
@@ -122,29 +127,33 @@ nav a:hover {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background: #00000080; /* Semi-transparent black background */
+  opacity: 0; /* Initially, hide the icons */
+  transition: opacity 0.3s ease; /* Add a smooth transition for opacity changes */
 }
 
+/* Styling for the icon container when hovering */
 .icon-container:hover {
-  opacity: 1;
+  opacity: 1; /* Show the icons when hovering */
 }
 
+/* Styling for heart and plus icons */
 .heart-icon,
 .plus-icon {
-  color: white;
-  font-size: 24px;
-  margin: 0 4px;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  color: white; /* Icon color */
+  font-size: 24px; /* Adjust the icon size */
+  margin: 0 4px; /* Add spacing around the icons */
+  cursor: pointer; /* Change cursor to a pointer on hover */
+  transition: color 0.3s ease; /* Add a smooth color transition */
 }
 
-.heart-icon.favorited {
-  color: #ff69b4; /* Pinkish red for favorited icon */
-}
-
+/* Styling for heart and plus icons on hover */
 .heart-icon:hover,
 .plus-icon:hover {
-  color: #ff69b4;
+  color: #dc1949; /* Change icon color to a pinkish red on hover */
+}
+
+/* Styling for the heart icon when favorited */
+.heart-icon.favorited {
+  color: #dc1949; /* Pinkish red for favorited icon */
 }
