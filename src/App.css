@@ -1,38 +1,174 @@
-.App {
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#header-container{
+  display: grid;
   text-align: center;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+  "header "
+  "nav";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#header-container h1{
+  grid-area: header;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+nav {
+  display: grid;
+  background-color: #333;
+  padding: 0;
+  margin: 0;
+  grid-area: nav;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas: ". pic-some .  . cart . ";
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  /* max-width: 140px; */
+}
+
+nav a:hover {
+  background-color: #777;
+
+}
+
+#pic-some-container {
+  grid-area: pic-some;
+}
+
+#pic-some-container a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+#cart-container {
+  grid-area: cart;
+  margin: 0;
+  padding: 0;
+}
+
+#cart-container a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.cart-icon {
+  margin: 0 4px;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 1fr; 
+  /* Only one row for the content */
+  justify-items: center; 
+  /* Center the content horizontally */
+  align-items: center; 
+  /* Center the content vertically */
+  /* height: 100vh;  */ 
+  /* Make the container take up the full viewport height */
+  padding: 20px; 
+  /* Add padding for spacing */
+}
+
+.container h2 {
+  max-width: 100%; /* Ensure the h1 does not overflow horizontally */
+}
+
+.photo-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 10px; 
+  max-width: 80rem;
+  /* outline: 0.25em solid #111; */
+}
+
+.scrimba-images {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+
+/* Adjust for mobile screens */
+@media (max-width: 768px) {
+  .photo-div {
+    grid-template-columns: repeat(2, 1fr); 
+    /* Change to 2 columns per row */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  /* Your existing container styles here */
+}
+
+.photo-div {
+  /* Your existing photo-div styles here */
+}
+
+.container {
+  /* Your existing container styles here */
+}
+
+.photo-div {
+  /* Your existing photo-div styles here */
+}
+
+.container {
+  /* Your existing container styles here */
+}
+
+.photo-div {
+  /* Your existing photo-div styles here */
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.icon-container:hover {
+  opacity: 1;
+}
+
+.heart-icon,
+.plus-icon {
   color: white;
+  font-size: 24px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.heart-icon.favorited {
+  color: #ff69b4; /* Pinkish red for favorited icon */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.heart-icon:hover,
+.plus-icon:hover {
+  color: #ff69b4;
 }
