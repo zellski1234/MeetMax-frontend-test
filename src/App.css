@@ -2,21 +2,24 @@
 body {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes at least the full viewport height */
 }
 
 /* Styling for the header container */
 #header-container {
   display: grid;
   text-align: center;
-  grid-template-columns: 1fr; /* One column for the header */
+  grid-template-columns: 1fr; /* Create a single column for the header */
   grid-template-areas:
     "header"
-    "nav";
+    "nav"; /* Define grid areas for the header and navigation */
 }
 
 /* Styling for the header (h1) element */
 #header-container h1 {
-  grid-area: header; /* Place the header in the 'header' area */
+  grid-area: header; /* Place the header in the 'header' grid area */
 }
 
 /* Styling for the navigation container */
@@ -25,9 +28,9 @@ nav {
   background-color: #333;
   padding: 0;
   margin: 0;
-  grid-area: nav; /* Place the navigation in the 'nav' area */
-  grid-template-columns: repeat(6, 1fr); /* Create 6 columns in the navigation */
-  grid-template-areas: ". pic-some .  . cart . "; /* Define grid areas for navigation items */
+  grid-area: nav; /* Place the navigation in the 'nav' grid area */
+  grid-template-columns: repeat(6, 1fr); /* Create 6 equal-width columns in the navigation */
+  grid-template-areas: ". pic-some favorites  . cart . "; /* Define grid areas for navigation items */
 }
 
 /* Styling for navigation links */
@@ -44,7 +47,7 @@ nav a:hover {
 
 /* Styling for the 'Pic Some' container */
 #pic-some-container {
-  grid-area: pic-some; /* Place 'Pic Some' in the 'pic-some' area */
+  grid-area: pic-some; /* Place 'Pic Some' in the 'pic-some' grid area */
 }
 
 /* Styling for 'Pic Some' link */
@@ -53,11 +56,24 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   padding: 10px 0;
+  max-width: 120px;
+  margin-left: 0em;
+}
+
+#favorites-container{
+  grid-area: favorites;
+}
+#favorites-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  max-width: 120px;
 }
 
 /* Styling for the 'Cart' container */
 #cart-container {
-  grid-area: cart; /* Place 'Cart' in the 'cart' area */
+  grid-area: cart; /* Place 'Cart' in the 'cart' grid area */
   margin: 0;
   padding: 0;
 }
@@ -70,13 +86,83 @@ nav a:hover {
   padding: 10px 0;
 }
 
+.cart-icon-container {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
 /* Styling for the cart icon */
-.cart-icon {
+.main-cart-icon {
   margin: 0 4px;
+}
+
+/* Styling for the Cart component */
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.cart-item-image {
+  max-width: 290px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-size: 1rem;
+}
+
+.cart-item-remove {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #e30505d2;
+  margin-left: auto;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+}
+
+.place-order-button {
+  background-color: #dc1949;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.place-order-button:hover {
+  background-color: #a61c3c;
 }
 
 /* Styling for the main content container */
 .container {
+  flex-grow: 1; /* Allow the container to grow and fill the remaining space */
   display: grid;
   grid-template-rows: 1fr; /* Only one row for the content */
   justify-items: center; /* Center the content horizontally */
@@ -102,13 +188,6 @@ nav a:hover {
   max-width: 100%;
   height: 200px;
   object-fit: cover;
-}
-
-/* Media query to adjust the grid for mobile screens */
-@media (max-width: 768px) {
-  .photo-div {
-    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns per row for mobile screens */
-  }
 }
 
 /* Styling for image containers with icons */
@@ -156,4 +235,88 @@ nav a:hover {
 /* Styling for the heart icon when favorited */
 .heart-icon.favorited {
   color: #dc1949; /* Pinkish red for favorited icon */
+}
+
+/* Styling for the cart icon */
+.cart-icon {
+  margin: 0 4px;
+  color: white; /* Icon color */
+  font-size: 24px; /* Icon size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: color 0.3s ease; /* Smooth color transition */
+  color: #dc1949;
+}
+
+/* Styling for the cart icon on hover */
+.cart-icon:hover {
+  color: #dc194aab; /* Change icon color to pinkish red on hover */
+}
+
+/* Add styles for the footer */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: auto; /* Push the footer to the bottom of the container */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex-basis: 30%;
+  margin: 10px;
+}
+
+.footer h3 {
+  font-size: 1.2rem;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+}
+
+/* Media query to adjust the grid for mobile screens */
+@media (max-width: 768px) {
+  .photo-div {
+    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns per row for mobile screens */
+  }
+
+  nav {
+    display: grid;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+    grid-area: nav; /* Place the navigation in the 'nav' area */
+    grid-template-columns: 1fr; /* Create 6 columns in the navigation */
+    grid-template-areas: 
+    "cart" 
+    "pic-some"
+    "favorites"
+    ; /* Define grid areas for navigation items */
+  }
+  
+  #pic-some-container a{
+    margin: 0;
+    max-width: 100%;
+  }
+  #favorites-container a{
+    margin: 0;
+    max-width: 100%;
+  }
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-section {
+    flex-basis: 100%;
+  }
 }
